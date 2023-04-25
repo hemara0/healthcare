@@ -1,42 +1,102 @@
 import 'package:flutter/material.dart';
+import 'package:healthcareit/pages/homePage.dart';
+import 'package:healthcareit/pages/myRecordsPage.dart';
+import 'package:healthcareit/pages/notificationsPage.dart';
+import 'package:healthcareit/pages/settingsPage.dart';
+import 'dbHelper/mongodb.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return const MaterialApp(home: NavigationExample());
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
+class NavigationExample extends StatefulWidget {
+  const NavigationExample({super.key});
+
+  @override
+  State<NavigationExample> createState() => _NavigationExampleState();
+}
+
+class _NavigationExampleState extends State<NavigationExample> {
+  int currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
+          backgroundColor: Colors.blue,
+          title: const Text("AppName"),
+          actions: <Widget>[
+            IconButton(
+                icon: const Icon(Icons.notifications),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute<void>(
+                    builder: (BuildContext context) {
+                      return Scaffold(
+                        appBar: AppBar(
+                          title: const Text('Notifications'),
+                        ),
+                        body: Container(
+                          color: Colors.white,
+                          alignment: Alignment.center,
+                          child: NotificationEx(),
+                        ),
+                      );
+                    },
+                  ));
+                })
+          ]),
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.white,
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        selectedIndex: currentPageIndex,
+        destinations: const <Widget>[
+          NavigationDestination(
+            icon: Icon(Icons.category_outlined),
+            label: 'My Records',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            label: 'home',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.settings_outlined),
+            icon: Icon(Icons.settings_outlined),
+            label: 'Settings',
+          ),
+        ],
       ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
+      body: <Widget>[
+        Container(
+          color: Colors.white,
+          alignment: Alignment.center,
+          child: Records(),
         ),
-      ),
+        Container(
+          color: Colors.white,
+          alignment: Alignment.center,
+          child: Home(),
+        ),
+        Container(
+          color: Colors.white,
+          alignment: Alignment.center,
+          child: Settings(),
+        ),
+      ][currentPageIndex],
     );
   }
 }
