@@ -3,7 +3,6 @@ import 'package:flutter/rendering.dart';
 import 'package:healthcareit/components/search.dart';
 
 class Home extends StatefulWidget {
-
   @override
   State<Home> createState() => _HomeState();
 }
@@ -13,49 +12,47 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView( 
-      child:  Column(
+    return SingleChildScrollView(
+        child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         SearchEx(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          
-
-           children: [
-            SizedBox.fromSize(
-              size: Size(120, 120),
-              child: ClipOval(
-                child: Material(
-                  color: Colors.blue,
-                  child: InkWell(
-                    splashColor: Colors.white, 
-                    onTap: () {}, 
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.book_online_outlined, size: 60,), // <-- Icon
-                        Text("Book "),
-                        Text("Appointment") // <-- Text
-                      ],
-                    ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          SizedBox.fromSize(
+            size: Size(120, 120),
+            child: ClipOval(
+              child: Material(
+                color: Colors.blue,
+                child: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {},
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.book_online_outlined,
+                        size: 60,
+                      ), // <-- Icon
+                      Text("Book "),
+                      Text("Appointment") // <-- Text
+                    ],
                   ),
                 ),
               ),
             ),
-           
-           SizedBox.fromSize(
+          ),
+          SizedBox.fromSize(
             size: const Size(120, 120),
             child: ClipOval(
               child: Material(
                 color: Colors.blue,
                 child: InkWell(
-                  splashColor: Colors.white, 
-                  onTap: () {}, 
+                  splashColor: Colors.white,
+                  onTap: () {},
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.add_shopping_cart,size: 60), // <-- Icon
+                      Icon(Icons.add_shopping_cart, size: 60), // <-- Icon
                       Text("Medical"),
                       Text("Store"), // <-- Text
                     ],
@@ -64,46 +61,49 @@ class _HomeState extends State<Home> {
               ),
             ),
           )
-           ]
+        ]),
+        SizedBox(
+          height: 50,
         ),
-        SizedBox( height: 50,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        
-           children: [
-            SizedBox.fromSize(
-              size: const Size(120, 120),
-              child: ClipOval(
-                child: Material(
-                  color: Colors.blue,
-                  child: InkWell(
-                    splashColor: Colors.white, 
-                    onTap: () {}, 
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const <Widget>[
-                        Icon(Icons.payment, size: 60,), // <-- Icon
-                        Text("Insurance"),
-                        Text("Cards") // <-- Text
-                      ],
-                    ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          SizedBox.fromSize(
+            size: const Size(120, 120),
+            child: ClipOval(
+              child: Material(
+                color: Colors.blue,
+                child: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {},
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(
+                        Icons.payment,
+                        size: 60,
+                      ), // <-- Icon
+                      Text("Insurance"),
+                      Text("Cards") // <-- Text
+                    ],
                   ),
                 ),
               ),
             ),
-           
-           SizedBox.fromSize(
+          ),
+          SizedBox.fromSize(
             size: Size(120, 120),
             child: ClipOval(
               child: Material(
                 color: Colors.blue,
                 child: InkWell(
-                  splashColor: Colors.white, 
-                  onTap: () {}, 
+                  splashColor: Colors.white,
+                  onTap: () {},
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.medical_services, size:  60,), // <-- Icon
+                      Icon(
+                        Icons.medical_services,
+                        size: 60,
+                      ), // <-- Icon
                       Text("Pay Medical"),
                       Text("bills") // <-- Text
                     ],
@@ -112,46 +112,49 @@ class _HomeState extends State<Home> {
               ),
             ),
           )
-           ]
+        ]),
+        SizedBox(
+          height: 50,
         ),
-        SizedBox( height: 50,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        
-           children: [
-            SizedBox.fromSize(
-              size: const Size(120, 120),
-              child: ClipOval(
-                child: Material(
-                  color: Colors.blue,
-                  child: InkWell(
-                    splashColor: Colors.white, 
-                    onTap: () {}, 
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const <Widget>[
-                        Icon(Icons.payment, size: 60,), // <-- Icon
-                        Text("Insurance"),
-                        Text("Cards") // <-- Text
-                      ],
-                    ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          SizedBox.fromSize(
+            size: const Size(120, 120),
+            child: ClipOval(
+              child: Material(
+                color: Colors.blue,
+                child: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {},
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(
+                        Icons.payment,
+                        size: 60,
+                      ), // <-- Icon
+                      Text("Insurance"),
+                      Text("Cards") // <-- Text
+                    ],
                   ),
                 ),
               ),
             ),
-           
-           SizedBox.fromSize(
+          ),
+          SizedBox.fromSize(
             size: Size(120, 120),
             child: ClipOval(
               child: Material(
                 color: Colors.blue,
                 child: InkWell(
-                  splashColor: Colors.white, 
-                  onTap: () {}, 
+                  splashColor: Colors.white,
+                  onTap: () {},
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.medical_services, size:  60,), // <-- Icon
+                      Icon(
+                        Icons.medical_services,
+                        size: 60,
+                      ), // <-- Icon
                       Text("Pay Medical"),
                       Text("bills") // <-- Text
                     ],
@@ -160,46 +163,49 @@ class _HomeState extends State<Home> {
               ),
             ),
           )
-           ]
+        ]),
+        SizedBox(
+          height: 50,
         ),
-        SizedBox( height: 50,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        
-           children: [
-            SizedBox.fromSize(
-              size: const Size(120, 120),
-              child: ClipOval(
-                child: Material(
-                  color: Colors.blue,
-                  child: InkWell(
-                    splashColor: Colors.white, 
-                    onTap: () {}, 
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const <Widget>[
-                        Icon(Icons.payment, size: 60,), // <-- Icon
-                        Text("Insurance"),
-                        Text("Cards") // <-- Text
-                      ],
-                    ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          SizedBox.fromSize(
+            size: const Size(120, 120),
+            child: ClipOval(
+              child: Material(
+                color: Colors.blue,
+                child: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {},
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(
+                        Icons.payment,
+                        size: 60,
+                      ), // <-- Icon
+                      Text("Insurance"),
+                      Text("Cards") // <-- Text
+                    ],
                   ),
                 ),
               ),
             ),
-          
-           SizedBox.fromSize(
+          ),
+          SizedBox.fromSize(
             size: Size(120, 120),
             child: ClipOval(
               child: Material(
                 color: Colors.blue,
                 child: InkWell(
-                  splashColor: Colors.white, 
-                  onTap: () {}, 
+                  splashColor: Colors.white,
+                  onTap: () {},
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.medical_services, size:  60,), // <-- Icon
+                      Icon(
+                        Icons.medical_services,
+                        size: 60,
+                      ), // <-- Icon
                       Text("Pay Medical"),
                       Text("bills") // <-- Text
                     ],
@@ -208,45 +214,49 @@ class _HomeState extends State<Home> {
               ),
             ),
           )
-           ]
+        ]),
+        SizedBox(
+          height: 50,
         ),
-         SizedBox( height: 50,),
-         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        
-           children: [
-            SizedBox.fromSize(
-              size: const Size(120, 120),
-              child: ClipOval(
-                child: Material(
-                  color: Colors.blue,
-                  child: InkWell(
-                    splashColor: Colors.white, 
-                    onTap: () {}, 
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const <Widget>[
-                        Icon(Icons.payment, size: 60,), // <-- Icon
-                        Text("Insurance"),
-                        Text("Cards") // <-- Text
-                      ],
-                    ),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          SizedBox.fromSize(
+            size: const Size(120, 120),
+            child: ClipOval(
+              child: Material(
+                color: Colors.blue,
+                child: InkWell(
+                  splashColor: Colors.white,
+                  onTap: () {},
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Icon(
+                        Icons.payment,
+                        size: 60,
+                      ), // <-- Icon
+                      Text("Insurance"),
+                      Text("Cards") // <-- Text
+                    ],
                   ),
                 ),
               ),
             ),
-           SizedBox.fromSize(
+          ),
+          SizedBox.fromSize(
             size: Size(120, 120),
             child: ClipOval(
               child: Material(
                 color: Colors.blue,
                 child: InkWell(
-                  splashColor: Colors.white, 
-                  onTap: () {}, 
+                  splashColor: Colors.white,
+                  onTap: () {},
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.medical_services, size:  60,), // <-- Icon
+                      Icon(
+                        Icons.medical_services,
+                        size: 60,
+                      ), // <-- Icon
                       Text("Pay Medical"),
                       Text("bills") // <-- Text
                     ],
@@ -255,13 +265,10 @@ class _HomeState extends State<Home> {
               ),
             ),
           )
-           ]
-        )
-       
+        ])
       ],
-)
-    
- ); }
+    ));
+  }
 // return SingleChildScrollView(
 //   child: Column(
 //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -3,11 +3,9 @@ import 'package:healthcareit/pages/homePage.dart';
 import 'package:healthcareit/pages/myRecordsPage.dart';
 import 'package:healthcareit/pages/notificationsPage.dart';
 import 'package:healthcareit/pages/settingsPage.dart';
-import 'dbHelper/mongodb.dart';
+import 'package:healthcareit/provider/provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await MongoDatabase.connect();
   runApp(MyApp());
 }
 
@@ -16,7 +14,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: NavigationExample());
+    return const MaterialApp(
+        home: NavigationExample(), debugShowCheckedModeBanner: false);
   }
 }
 
