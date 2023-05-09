@@ -6,5 +6,6 @@ class User {
 
   const User({required this.name, required this.email});
 
-  static User fromJson(json) => User(name: json["name"], email: json["email"]);
+  static User fromJson(json) => 
+  User(name: json["name"], email: json["email"]);
 }

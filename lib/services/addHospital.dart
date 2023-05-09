@@ -107,9 +107,9 @@ class CustomSearchDelegate extends SearchDelegate {
         var result = matchQuery[index];
         return ListTile(
             title: Text(result),
-            onTap: () => ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text("$result added"))));
-        //onTap: () => submitData(result));
+            // onTap: () => ScaffoldMessenger.of(context)
+            //     .showSnackBar(SnackBar(content: Text("$result added"))));
+            onTap: () => submitData(result));
 
         // return InkWell(
         //   child: Text(result.toString()),
