@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
-
   @override
   State<Settings> createState() => _SettingsState();
 }
@@ -9,8 +8,6 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Text("welcome to Settings")
-    );
+    return Container(child: const Text("welcome to Settings"));
   }
 }
