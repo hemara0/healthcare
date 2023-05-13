@@ -29,6 +29,7 @@ class _VisitsState extends State<VisitsEx> {
         "__v": 0
       },
     ];
-    return Expanded(child: buildUsers(fetchedData, "visitsDetail"));
+    return Column(
+        children: [Expanded(child: buildUsers(fetchedData, "visitsDetail"))]);
   }
 }
