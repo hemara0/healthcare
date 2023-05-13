@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:healthcareit/model/user.dart';
+import 'package:healthcareit/pages/visitsPage.dart';
+import 'package:healthcareit/pages/visitsDetail.dart';
 
-Widget buildUsers(List users) => ListView.builder(
+Widget buildUsers(List users, String navPage) => ListView.builder(
       itemCount: users.length,
       itemBuilder: (context, index) {
         final user = users[index];
@@ -11,7 +13,20 @@ Widget buildUsers(List users) => ListView.builder(
           margin: const EdgeInsets.symmetric(vertical: 10),
           child: ListTile(
             onTap: () {
-              print('tapped');
+              Navigator.push(context, MaterialPageRoute<void>(
+                builder: (BuildContext context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: Text(navPage),
+                    ),
+                    body: Container(
+                      color: Colors.white,
+                      alignment: Alignment.center,
+                      child: getPage(navPage),
+                    ),
+                  );
+                },
+              ));
             },
             // leading: Text(
             //   users[index]["_id"].toString(),
@@ -30,3 +45,11 @@ Widget buildUsers(List users) => ListView.builder(
         );
       },
     );
+
+Widget getPage(navPage) {
+  if (navPage == "visitsDetail") {
+    return VisitsDetailEx();
+  } else {
+    return VisitsEx();
+  }
+}

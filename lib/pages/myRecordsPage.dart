@@ -36,32 +36,32 @@ class _RecordsState extends State<Records> {
     List fetchedData = [
       {
         "_id": "645200814fcac016618df063",
-        "name": "name2",
-        "email": "email2",
+        "name": "hospital1",
+        "email": "Address1",
         "__v": 0
       },
       {
         "_id": "6452189268e6b826871743c7",
-        "name": "name3",
-        "email": "email3",
+        "name": "hospital2",
+        "email": "Address2",
         "__v": 0
       },
       {
         "_id": "6453785e1144977889e3b9c6",
-        "name": "result",
-        "email": "hema.h@gmail.com",
+        "name": "hospital3",
+        "email": "Address3",
         "__v": 0
       },
       {
         "_id": "645378db1144977889e3b9c8",
-        "name": "Appolo",
-        "email": "hema.h@gmail.com",
+        "name": "hospital4",
+        "email": "Address4",
         "__v": 0
       },
       {
         "_id": "6454b90b9b621e9e81850170",
-        "name": "Pineapples",
-        "email": "hema.h@gmail.com",
+        "name": "hospital5",
+        "email": "Address5",
         "__v": 0
       }
     ];
@@ -83,7 +83,7 @@ class _RecordsState extends State<Records> {
               children: const [
                 Text('Hospitals'),
                 SizedBox(
-                  width: 200,
+                  width: 230,
                 ),
                 Icon(
                   Icons.add,
@@ -92,7 +92,7 @@ class _RecordsState extends State<Records> {
               ],
             ),
           )),
-      Expanded(child: buildUsers(fetchedData))
+      Expanded(child: buildUsers(fetchedData, "Visits"))
     ]);
   }
 }
