@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:healthcareit/components/listOnly.dart';
+
+import '../components/listObject.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -6,8 +9,26 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  @override
+  List settingsData = [
+    "Personal Information",
+    "Account Settings",
+    "My Cards",
+    "My Orders",
+    "Payments and Banking",
+    "Storage and Data",
+    "FAQ",
+    "Logout",
+  ];
   Widget build(BuildContext context) {
-    return Container(child: const Text("welcome to Settings"));
+    return Column(children: [
+      Container(
+          height: 50,
+          color: Colors.blue,
+          child: ListTile(
+            leading: Icon(Icons.person),
+            title: Text("Name"),
+          )),
+      Expanded(child: buildlist(settingsData))
+    ]);
   }
 }

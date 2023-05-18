@@ -13,23 +13,23 @@ class Records extends StatefulWidget {
 }
 
 class _RecordsState extends State<Records> {
-  late final usersFuture;
+  //late final usersFuture;
 
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    usersFuture = getUsers();
-  }
+  //   usersFuture = getUsers();
+  // }
 
-  Future<List<User>> fetchedData = getUsers();
-  static Future<List<User>> getUsers() async {
-    // const url = '';
-    // final response = await http.get(Uri.parse(url));
-    // final body = json.decode(response.body);
-    dynamic data = fetchData();
-    return data.map<User>(User.fromJson).toList();
-  }
+  // Future<List<User>> fetchedData = getUsers();
+  // static Future<List<User>> getUsers() async {
+  //   // const url = '';
+  //   // final response = await http.get(Uri.parse(url));
+  //   // final body = json.decode(response.body);
+  //   dynamic data = fetchData();
+  //   return data.map<User>(User.fromJson).toList();
+  // }
 
   @override
   Widget build(BuildContext context) {
