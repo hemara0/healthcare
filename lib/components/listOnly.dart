@@ -18,20 +18,24 @@ Widget buildlist(List users) => ListView.builder(
           margin: const EdgeInsets.symmetric(vertical: 10),
           child: ListTile(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute<void>(
-                builder: (BuildContext context) {
-                  return Scaffold(
-                    appBar: AppBar(
-                      title: Text(users[index]),
-                    ),
-                    body: Container(
-                      color: Colors.white,
-                      alignment: Alignment.center,
-                      child: getPage(users[index]),
-                    ),
-                  );
-                },
-              ));
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => getPage(users[index])),
+              );
+              // Navigator.push(context, MaterialPageRoute<void>(
+              //   builder: (BuildContext context) {
+              //     return Scaffold(
+              //       appBar: AppBar(
+              //         title: Text(users[index]),
+              //       ),
+              //       body: Container(
+              //         color: Colors.white,
+              //         alignment: Alignment.center,
+              //         child: getPage(users[index]),
+              //       ),
+              //     );
+              //   },
+              // ));
             },
             // leading: Text(
             //   users[index]["_id"].toString(),
