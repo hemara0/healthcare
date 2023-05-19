@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../model/user.dart';
+
 // class FetchProvider extends ChangeNotifier {
 //   final HttpClient = http.Client();
 //   late List<dynamic> parsedFetchData;
@@ -40,12 +42,30 @@ Future fetchData() async {
   return json.decode(response.body);
 }
 
+Future<User> fetchUserData() async {
+  final String _url = "http://localhost:3000/users/64674b10d993bcbccfffe452";
+  final url = Uri.parse(_url);
+  final response = await http.get(url);
+  print(response.body);
+  return User.fromJson(json.decode(response.body.toString()));
+}
+
 Future<void> submitData(result) async {
-  const String _url = "http://127.0.0.1:3000/users";
+  const String _url = "http://localhost:3000/users";
   final uri = Uri.parse(_url);
-  dynamic data = {"name": result, "email": "hema.h@gmail.com"};
+  dynamic data = result;
   final respose =
       await http.post(uri, body: jsonEncode(data), headers: _setHeaders());
+  print(respose.statusCode);
+  print(respose);
+}
+
+Future<void> updateData(result) async {
+  const String _url = "http://localhost:3000/users/64674b10d993bcbccfffe452";
+  final uri = Uri.parse(_url);
+  dynamic data = result;
+  final respose =
+      await http.patch(uri, body: jsonEncode(data), headers: _setHeaders());
   print(respose.statusCode);
   print(respose);
 }

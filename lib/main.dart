@@ -70,7 +70,7 @@ class _NavigationExampleState extends State<NavigationExample> {
           ),
           NavigationDestination(
             icon: Icon(Icons.home_outlined),
-            label: 'home',
+            label: 'Home',
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.settings_outlined),
