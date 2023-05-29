@@ -17,8 +17,8 @@ Widget buildlist(List users) => ListView.builder(
           elevation: 4,
           margin: const EdgeInsets.symmetric(vertical: 10),
           child: ListTile(
-            onTap: () {
-              Navigator.push(
+            onTap: () async {
+              await Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => getPage(users[index])),
               );

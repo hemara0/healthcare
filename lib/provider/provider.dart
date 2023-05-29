@@ -34,20 +34,27 @@ _setHeaders() => {
 //   }
 // }
 
-Future fetchData() async {
-  final String _url = "http://localhost:3000/users";
+dynamic fetchData() async {
+  const String _url = "http://localhost:3000/users";
   final url = Uri.parse(_url);
   final response = await http.get(url);
   print(response.body);
-  return json.decode(response.body);
+  dynamic resBody = json.decode(response.body);
+  return resBody;
 }
 
 Future<User> fetchUserData() async {
-  final String _url = "http://localhost:3000/users/64674b10d993bcbccfffe452";
+  await Future.delayed(const Duration(seconds: 2));
+  const String _url = "http://localhost:3000/users/645f679ebef9653d9304e3c7";
   final url = Uri.parse(_url);
   final response = await http.get(url);
-  print(response.body);
-  return User.fromJson(json.decode(response.body.toString()));
+  if (response.statusCode == 200) {
+    final jsonData = jsonDecode(response.body);
+    var user = User.fromJson(jsonData);
+    return user;
+  } else {
+    throw Exception('Failed to fetch user data');
+  }
 }
 
 Future<void> submitData(result) async {
@@ -61,7 +68,7 @@ Future<void> submitData(result) async {
 }
 
 Future<void> updateData(result) async {
-  const String _url = "http://localhost:3000/users/64674b10d993bcbccfffe452";
+  const String _url = "http://localhost:3000/users/645f679ebef9653d9304e3c7";
   final uri = Uri.parse(_url);
   dynamic data = result;
   final respose =

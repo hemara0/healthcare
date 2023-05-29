@@ -1,63 +1,106 @@
 class User {
-  User(
-    this.user_name,
-    this.user_email,
-    this.user_dob,
-    this.user_mobile,
-    this.user_bloodgroup,
-    this.user_address_street,
-    this.user_pincode,
-    this.user_city,
-    this.user_state,
-    this.user_country,
-    this.user_govtids,
-    this.user_hospitals,
-    this.user_lastlogin,
-    this.user_registereddate,
-  );
-  final String user_name;
-  final String user_email;
-  final String user_dob;
-  final String user_mobile;
-  final String user_bloodgroup;
-  final String user_address_street;
-  final String user_pincode;
-  final String user_city;
-  final String user_state;
-  final String user_country;
-  final List user_govtids;
-  final List user_hospitals;
-  final String user_lastlogin;
-  final String user_registereddate;
-  // named constructor
-  User.fromJson(Map<String, dynamic> json)
-      : user_name = json['user_name'],
-        user_email = json['user_email'],
-        user_dob = json['user_dob'],
-        user_mobile = json['user_mobile'],
-        user_bloodgroup = json['user_bloodgroup'],
-        user_address_street = json['user_address_street'],
-        user_pincode = json['user_pincode'],
-        user_city = json['user_city'],
-        user_state = json['user_state'],
-        user_country = json['user_country'],
-        user_hospitals = json['user_hospitals'],
-        user_govtids = json['user_govtids'],
-        user_lastlogin = json['user_lastlogin'],
-        user_registereddate = json['user_registereddate'];
-  // method
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'user_name': user_name,
-//       'user_email': user_email,
-//       'user_email': user_email,
-//       'user_email': user_email,
-//       'user_email': user_email,
-//       'user_email': user_email,
-//       'user_email': user_email,
-//       'user_email': user_email,
-//       'user_email': user_email,
-//       'user_email': user_email,
-//     };
-//   }
+  final String userName;
+  final String userEmail;
+  final String userDOB;
+  final String userMobile;
+  final List<GovernmentId> userGovtIds;
+  final List<Hospital> userHospitals;
+  final String userAddressStreet;
+  final String userBloodGroup;
+  final String userCity;
+  final String userCountry;
+  final String userPincode;
+  final String userState;
+
+  User({
+    required this.userName,
+    required this.userEmail,
+    required this.userDOB,
+    required this.userMobile,
+    required this.userGovtIds,
+    required this.userHospitals,
+    required this.userAddressStreet,
+    required this.userBloodGroup,
+    required this.userCity,
+    required this.userCountry,
+    required this.userPincode,
+    required this.userState,
+  });
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    List<GovernmentId> govtIds = [];
+    if (json['user_govtids'] != null) {
+      govtIds = (json['user_govtids'] as List<dynamic>).map((govtId) {
+        return GovernmentId(
+          idType: govtId['idType'] as String? ?? '',
+          idNumber: govtId['idNumber'] as String? ?? '',
+        );
+      }).toList();
+    }
+
+    List<Hospital> hospitals = [];
+    if (json['user_hospitals'] != null) {
+      hospitals = (json['user_hospitals'] as List<dynamic>).map((hospital) {
+        List<Visit> visits = [];
+        if (hospital['visits'] != null) {
+          visits = (hospital['visits'] as List<dynamic>).map((visit) {
+            return Visit(
+              visitDescription: visit['visitDescription'] as String? ?? '',
+              visitDate: visit['visitDate'] as String? ?? '',
+            );
+          }).toList();
+        }
+
+        return Hospital(
+          hospitalName: hospital['hospitalName'] as String? ?? '',
+          visits: visits,
+        );
+      }).toList();
+    }
+
+    return User(
+      userName: json['user_name'] as String? ?? '',
+      userEmail: json['user_email'] as String? ?? '',
+      userDOB: json['user_dob'] as String? ?? '',
+      userMobile: json['user_mobile'] as String? ?? '',
+      userGovtIds: govtIds,
+      userHospitals: hospitals,
+      userAddressStreet: json['user_address_street'] as String? ?? '',
+      userBloodGroup: json['user_bloodgroup'] as String? ?? '',
+      userCity: json['user_city'] as String? ?? '',
+      userCountry: json['user_country'] as String? ?? '',
+      userPincode: json['user_pincode'] as String? ?? '',
+      userState: json['user_state'] as String? ?? '',
+    );
+  }
+}
+
+class GovernmentId {
+  final String idType;
+  final String idNumber;
+
+  GovernmentId({
+    required this.idType,
+    required this.idNumber,
+  });
+}
+
+class Hospital {
+  final String hospitalName;
+  final List<Visit> visits;
+
+  Hospital({
+    required this.hospitalName,
+    required this.visits,
+  });
+}
+
+class Visit {
+  final String visitDescription;
+  final String visitDate;
+
+  Visit({
+    required this.visitDescription,
+    required this.visitDate,
+  });
 }
