@@ -6,9 +6,11 @@ import 'package:healthcareit/settings/payments.dart';
 import 'package:healthcareit/settings/personalInfo.dart';
 import 'package:healthcareit/settings/storageData.dart';
 
+import '../model/user.dart';
+import '../pages/visitsPage.dart';
 import '../settings/account.dart';
 
-Widget buildlist(List users) => ListView.builder(
+Widget buildlist(List users, User userPersonalInfo) => ListView.builder(
       itemCount: users.length,
       itemBuilder: (context, index) {
         final user = users[index];
@@ -20,7 +22,9 @@ Widget buildlist(List users) => ListView.builder(
             onTap: () async {
               await Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => getPage(users[index])),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        getPage(users[index], userPersonalInfo)),
               );
               // Navigator.push(context, MaterialPageRoute<void>(
               //   builder: (BuildContext context) {
@@ -55,7 +59,7 @@ Widget buildlist(List users) => ListView.builder(
       },
     );
 
-getPage(navPage) {
+getPage(navPage, userPersonalInfo) {
   switch (navPage) {
     case "Account Settings":
       {
@@ -80,7 +84,7 @@ getPage(navPage) {
       }
     case "Personal Information":
       {
-        return PersonalInfo();
+        return PersonalInfo(userInfo: userPersonalInfo);
       }
     case "Storage and Data":
       {
@@ -93,9 +97,9 @@ getPage(navPage) {
 
     default:
       {
-        //statements;
+        print(navPage);
+        return VisitsEx(hospitalName: navPage, userInfo: userPersonalInfo);
       }
-      break;
   }
 }
 
