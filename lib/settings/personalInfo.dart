@@ -1,15 +1,17 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../model/user.dart';
 import '../provider/provider.dart';
 
 class PersonalInfo extends StatefulWidget {
+  late User userInfo;
+  PersonalInfo({required this.userInfo});
   @override
   State<PersonalInfo> createState() => _PersonalInfoState();
 }
 
 class _PersonalInfoState extends State<PersonalInfo> {
   bool _isEnabled = false;
-
   // static var userPersonalinfo = {
   //   "_id": "645f679ebef9653d9304e3c7",
   //   "user_name": "samplename2",
@@ -69,10 +71,11 @@ class _PersonalInfoState extends State<PersonalInfo> {
 
   @override
   Widget build(BuildContext context) {
+    User info = widget.userInfo;
     return Column(children: [
       Expanded(
         child: FutureBuilder<List>(
-            future: getUserDetails(),
+            future: getUserDetails(info),
             builder: (context, snap) {
               if ((snap.data == null)) {
                 return const Center(child: CircularProgressIndicator());
@@ -111,7 +114,6 @@ class _PersonalInfoState extends State<PersonalInfo> {
                       );
                     });
               }
-              throw Exception('except in listview');
             }),
       ),
       SizedBox(
@@ -122,21 +124,23 @@ class _PersonalInfoState extends State<PersonalInfo> {
                 child: ElevatedButton(
                     onPressed: () {
                       saveAndSend(_controllers);
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("Your details are Updated")));
                     },
-                    child: Text("Save"))),
+                    child: const Text("Save"))),
             Expanded(
                 child: ElevatedButton(
                     onPressed: () async {
                       Navigator.pop(context);
                     },
-                    child: Text("Discard"))),
+                    child: const Text("Discard"))),
           ],
         ),
       )
     ]);
   }
 
-  void saveAndSend(List<TextEditingController> controllers) {
+  void saveAndSend(List<TextEditingController> controllers) async {
     var userEditedinfo = {};
     List keyList = [
       'user_name',
@@ -154,17 +158,17 @@ class _PersonalInfoState extends State<PersonalInfo> {
       userEditedinfo[keyList[i]] = controllers[i].text;
     }
     //userEditedinfo['user_hospitals'] = ["hosp1", "hosp2"];
-    updateData(userEditedinfo);
+    await updateData(userEditedinfo);
   }
 
-  Future<List> getUserDetails() async {
-    print("******************");
+  Future<List> getUserDetails(userPersonalinfo1) async {
+    print("PersonalInfo Page");
     // Future.delayed(const Duration(seconds: 5), () async {
-    var userPersonalinfo1 = await fetchUserData();
+    //var userPersonalinfo1 = await fetchUserData();
     print('##############');
 
     //print(userPersonalinfo1);
-    List users = [
+    List userBasicInfo = [
       userPersonalinfo1.userName,
       userPersonalinfo1.userEmail,
       userPersonalinfo1.userDOB,
@@ -176,7 +180,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
       userPersonalinfo1.userState,
       userPersonalinfo1.userCountry,
     ];
-    return users;
+    return userBasicInfo;
     //});
   }
 }

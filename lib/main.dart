@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
         home: NavigationExample(), debugShowCheckedModeBanner: false);
   }
 }
 
 class NavigationExample extends StatefulWidget {
-  const NavigationExample({super.key});
+  //const NavigationExample({super.key});
 
   @override
   State<NavigationExample> createState() => _NavigationExampleState();

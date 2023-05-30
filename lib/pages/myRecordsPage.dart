@@ -7,12 +7,48 @@ import 'package:flutter/widgets.dart';
 import 'package:healthcareit/provider/provider.dart';
 import 'package:healthcareit/services/addHospital.dart';
 
+import '../components/listOnly.dart';
+
 class Records extends StatefulWidget {
+  //final User userPersonalInfo;
+  //Records({required this.userPersonalInfo});
   @override
   State<Records> createState() => _RecordsState();
 }
 
 class _RecordsState extends State<Records> {
+  // List fetchedData = [
+  //   {
+  //     "_id": "645200814fcac016618df063",
+  //     "name": "hospital1",
+  //     "email": "Address1",
+  //     "__v": 0
+  //   },
+  //   {
+  //     "_id": "6452189268e6b826871743c7",
+  //     "name": "hospital2",
+  //     "email": "Address2",
+  //     "__v": 0
+  //   },
+  //   {
+  //     "_id": "6453785e1144977889e3b9c6",
+  //     "name": "hospital3",
+  //     "email": "Address3",
+  //     "__v": 0
+  //   },
+  //   {
+  //     "_id": "645378db1144977889e3b9c8",
+  //     "name": "hospital4",
+  //     "email": "Address4",
+  //     "__v": 0
+  //   },
+  //   {
+  //     "_id": "6454b90b9b621e9e81850170",
+  //     "name": "hospital5",
+  //     "email": "Address5",
+  //     "__v": 0
+  //   }
+  // ];
   //late final usersFuture;
 
   // @override
@@ -33,38 +69,7 @@ class _RecordsState extends State<Records> {
 
   @override
   Widget build(BuildContext context) {
-    List fetchedData = [
-      {
-        "_id": "645200814fcac016618df063",
-        "name": "hospital1",
-        "email": "Address1",
-        "__v": 0
-      },
-      {
-        "_id": "6452189268e6b826871743c7",
-        "name": "hospital2",
-        "email": "Address2",
-        "__v": 0
-      },
-      {
-        "_id": "6453785e1144977889e3b9c6",
-        "name": "hospital3",
-        "email": "Address3",
-        "__v": 0
-      },
-      {
-        "_id": "645378db1144977889e3b9c8",
-        "name": "hospital4",
-        "email": "Address4",
-        "__v": 0
-      },
-      {
-        "_id": "6454b90b9b621e9e81850170",
-        "name": "hospital5",
-        "email": "Address5",
-        "__v": 0
-      }
-    ];
+    //User userPersonalInfo = widget.userPersonalInfo;
     return Column(children: [
       Container(
           height: 50,
@@ -92,7 +97,38 @@ class _RecordsState extends State<Records> {
               ],
             ),
           )),
-      Expanded(child: buildUsers(fetchedData, "Visits"))
+      Expanded(
+          child: FutureBuilder<User>(
+              // future: getUserDetails().then((value) {
+              //   List userHospitals1 = [];
+              //   for (var hospitals in value.userHospitals) {
+              //     String hospitalname = hospitals.hospitalName;
+              //     userHospitals1.add(hospitalname);
+              //   }
+              //   return userHospitals1;
+              // }),
+              future: getUserDetails(),
+              builder: (context, snap) {
+                if ((snap.data == null)) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  return buildlist(
+                      snap.data!.userHospitals
+                          .map((hospital) => hospital.hospitalName)
+                          .toList(),
+                      snap.data!);
+                }
+              }))
     ]);
+  }
+
+  Future<User> getUserDetails() async {
+    print("My Records Main page");
+    // Future.delayed(const Duration(seconds: 5), () async {
+    var userPersonalinfo = await fetchUserData();
+    print('##############');
+    print(userPersonalinfo.userHospitals);
+
+    return userPersonalinfo;
   }
 }

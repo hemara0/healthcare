@@ -73,6 +73,26 @@ class User {
       userState: json['user_state'] as String? ?? '',
     );
   }
+
+  Map<String, dynamic> toJson(User userPersonalinfo1) {
+    final Map<String, dynamic> data = {
+      'user_name': userName,
+      'user_email': userEmail,
+      'user_dob': userDOB,
+      'user_mobile': userMobile,
+      'user_govtids': userGovtIds.map((govtId) => govtId.toJson()).toList(),
+      'user_hospitals':
+          userHospitals.map((hospital) => hospital.toJson()).toList(),
+      'user_address_street': userAddressStreet,
+      'user_bloodgroup': userBloodGroup,
+      'user_city': userCity,
+      'user_country': userCountry,
+      'user_pincode': userPincode,
+      'user_state': userState,
+    };
+
+    return data;
+  }
 }
 
 class GovernmentId {
@@ -83,6 +103,15 @@ class GovernmentId {
     required this.idType,
     required this.idNumber,
   });
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
+      'idType': idType,
+      'idNumber': idNumber,
+    };
+
+    return data;
+  }
 }
 
 class Hospital {
@@ -93,6 +122,15 @@ class Hospital {
     required this.hospitalName,
     required this.visits,
   });
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
+      'hospitalName': hospitalName,
+      'visits': visits.map((visit) => visit.toJson()).toList(),
+    };
+
+    return data;
+  }
 }
 
 class Visit {
@@ -103,4 +141,13 @@ class Visit {
     required this.visitDescription,
     required this.visitDate,
   });
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
+      'visitDescription': visitDescription,
+      'visitDate': visitDate,
+    };
+
+    return data;
+  }
 }
