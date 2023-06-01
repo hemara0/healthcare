@@ -82,10 +82,10 @@ class _RecordsState extends State<Records> {
                 },
               ));
             },
-            child: Row(
+            child: const Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
+              children: [
                 Text('Hospitals'),
                 SizedBox(
                   width: 230,
@@ -124,7 +124,7 @@ class _RecordsState extends State<Records> {
 
   Future<User> getUserDetails() async {
     print("My Records Main page");
-    // Future.delayed(const Duration(seconds: 5), () async {
+    // Future.delayed(const Duration(seconds: 5), () async {}
     var userPersonalinfo = await fetchUserData();
     print('##############');
     print(userPersonalinfo.userHospitals);
