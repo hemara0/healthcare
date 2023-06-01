@@ -67,7 +67,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
   //   userPersonalinfo['user_state'],
   //   userPersonalinfo['user_country'],
   // ];
-  List<TextEditingController> _controllers = [];
+  final List<TextEditingController> _controllers = [];
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                       _controllers.add(TextEditingController());
                       final user = snap.data![index];
                       return Card(
-                        color: Colors.blue,
+                        //color: Colors.blue,
                         elevation: 4,
                         margin: const EdgeInsets.symmetric(vertical: 10),
                         child: ListTile(
@@ -95,7 +95,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
                                 _isEnabled = !_isEnabled;
                               });
                             },
-                            trailing: Icon(
+                            trailing: const Icon(
                               Icons.edit,
                               color: Colors.black,
                             ),
@@ -103,8 +103,8 @@ class _PersonalInfoState extends State<PersonalInfo> {
                               enabled: _isEnabled,
                               controller: _controllers[index],
                               decoration: InputDecoration(
-                                hintText: user,
-                              ),
+                                  hintText: user,
+                                  border: const OutlineInputBorder()),
                             )
                             // subtitle: Text(
                             //   users[index],
@@ -171,7 +171,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
     List userBasicInfo = [
       userPersonalinfo1.userName,
       userPersonalinfo1.userEmail,
-      userPersonalinfo1.userDOB,
+      userPersonalinfo1.userDob,
       userPersonalinfo1.userMobile,
       userPersonalinfo1.userBloodGroup,
       userPersonalinfo1.userAddressStreet,
@@ -180,6 +180,7 @@ class _PersonalInfoState extends State<PersonalInfo> {
       userPersonalinfo1.userState,
       userPersonalinfo1.userCountry,
     ];
+    print(userBasicInfo);
     return userBasicInfo;
     //});
   }

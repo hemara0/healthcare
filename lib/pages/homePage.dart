@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:healthcareit/components/search.dart';
+import 'package:healthcareit/home/appointment.dart';
+import 'package:healthcareit/home/insuranceCards.dart';
+import 'package:healthcareit/home/medicalStore.dart';
+import 'package:healthcareit/home/payBills.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -25,8 +29,14 @@ class _HomeState extends State<Home> {
                 color: Colors.blue,
                 child: InkWell(
                   splashColor: Colors.white,
-                  onTap: () {},
-                  child: Column(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AppointmentPage()),
+                    );
+                  },
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(
@@ -48,8 +58,13 @@ class _HomeState extends State<Home> {
                 color: Colors.blue,
                 child: InkWell(
                   splashColor: Colors.white,
-                  onTap: () {},
-                  child: Column(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MedicalStore()),
+                    );
+                  },
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.add_shopping_cart, size: 60), // <-- Icon
@@ -62,7 +77,7 @@ class _HomeState extends State<Home> {
             ),
           )
         ]),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
@@ -73,10 +88,15 @@ class _HomeState extends State<Home> {
                 color: Colors.blue,
                 child: InkWell(
                   splashColor: Colors.white,
-                  onTap: () {},
-                  child: Column(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => InsuranceCards()),
+                    );
+                  },
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
+                    children: <Widget>[
                       Icon(
                         Icons.payment,
                         size: 60,
@@ -96,7 +116,12 @@ class _HomeState extends State<Home> {
                 color: Colors.blue,
                 child: InkWell(
                   splashColor: Colors.white,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PayBills()),
+                    );
+                  },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -125,9 +150,9 @@ class _HomeState extends State<Home> {
                 child: InkWell(
                   splashColor: Colors.white,
                   onTap: () {},
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
+                    children: <Widget>[
                       Icon(
                         Icons.payment,
                         size: 60,
@@ -148,7 +173,7 @@ class _HomeState extends State<Home> {
                 child: InkWell(
                   splashColor: Colors.white,
                   onTap: () {},
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(
@@ -164,7 +189,7 @@ class _HomeState extends State<Home> {
             ),
           )
         ]),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
@@ -176,9 +201,9 @@ class _HomeState extends State<Home> {
                 child: InkWell(
                   splashColor: Colors.white,
                   onTap: () {},
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
+                    children: <Widget>[
                       Icon(
                         Icons.payment,
                         size: 60,

@@ -75,7 +75,7 @@ getPage(navPage, userPersonalInfo) {
       }
     case "My Orders":
       {
-        return Orders();
+        return MyOrders();
       }
 
     case "Payments and Banking":

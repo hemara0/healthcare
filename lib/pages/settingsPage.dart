@@ -59,6 +59,7 @@ class _SettingsState extends State<Settings> {
     print("Settings Main page");
     // Future.delayed(const Duration(seconds: 5), () async {
     var userPersonalinfo = await fetchUserData();
+    print(userPersonalinfo);
     print('##############');
     return userPersonalinfo;
   }
