@@ -10,6 +10,36 @@ import '../model/user.dart';
 import '../pages/visitsPage.dart';
 import '../settings/account.dart';
 
+Widget buildAppointment(Appointment appointmentFields, List fieldIcons) {
+  List appointmentList = [];
+  appointmentList.add(appointmentFields.hospitalId);
+  appointmentList.add(appointmentFields.doctorId);
+  appointmentList.add(appointmentFields.visitDate);
+  appointmentList.add(appointmentFields.visitTime);
+  appointmentList.add(appointmentFields.reasonOfVisit);
+  appointmentList.add(appointmentFields.bookingDate);
+  return Column(children: [
+    Expanded(
+        child: ListView.builder(
+            itemCount: appointmentList.length,
+            itemBuilder: (context, index) {
+              return Card(
+                  color: Colors.blue,
+                  //elevation: 4,
+                  //margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: ListTile(
+                    onTap: () {
+                      // setState(() {
+                      //   _isEnabled = !_isEnabled;
+                      // });
+                    },
+                    leading: Icon(fieldIcons[index]),
+                    title: Text(appointmentList[index]),
+                  ));
+            }))
+  ]);
+}
+
 Widget buildlist(List users, User userPersonalInfo) => ListView.builder(
       itemCount: users.length,
       itemBuilder: (context, index) {
