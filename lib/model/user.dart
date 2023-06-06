@@ -193,7 +193,7 @@ class Appointment {
   String visitDate;
   String visitTime;
   String reasonOfVisit;
-
+  String status;
   Appointment({
     required this.hospitalId,
     required this.doctorId,
@@ -201,6 +201,7 @@ class Appointment {
     required this.visitDate,
     required this.visitTime,
     required this.reasonOfVisit,
+    required this.status,
   });
 
   factory Appointment.fromJson(Map<String, dynamic> json) {
@@ -211,6 +212,7 @@ class Appointment {
       visitDate: json['visitDate'],
       visitTime: json['visitTime'],
       reasonOfVisit: json['reasonOfVisit'],
+      status: json['status'],
     );
   }
 
@@ -222,6 +224,7 @@ class Appointment {
       'visitDate': visitDate,
       'visitTime': visitTime,
       'reasonOfVisit': reasonOfVisit,
+      'status': status,
     };
   }
 }
