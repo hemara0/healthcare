@@ -38,8 +38,8 @@ class _SettingsState extends State<Settings> {
             future: getUserDetails(),
             builder: (context, snap) {
               if ((snap.data == null)) {
-                //return const Center(child: CircularProgressIndicator());
-                print('except at settings');
+                return const Center(child: CircularProgressIndicator());
+                //print('except at settings');
               } else {
                 return Column(children: [
                   Container(
@@ -52,7 +52,7 @@ class _SettingsState extends State<Settings> {
                   Expanded(child: buildlist(settingsData, snap.data!))
                 ]);
               }
-              throw Exception('except');
+              //throw Exception('except');
             }));
     // ]);
   }

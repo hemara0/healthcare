@@ -50,27 +50,27 @@ Widget buildlist(List users, User userPersonalInfo) => ListView.builder(
           margin: const EdgeInsets.symmetric(vertical: 10),
           child: ListTile(
             onTap: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        getPage(users[index], userPersonalInfo)),
-              );
-              // Navigator.push(context, MaterialPageRoute<void>(
-              //   builder: (BuildContext context) {
-              //     return Scaffold(
-              //       appBar: AppBar(
-              //         title: Text(users[index]),
-              //       ),
-              //       body: Container(
-              //         color: Colors.white,
-              //         alignment: Alignment.center,
-              //         child: getPage(users[index]),
-              //       ),
-              //     );
-              //   },
-              // ));
+              // await Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (context) =>
+              //           getPage(users[index], userPersonalInfo)),
+              // );
+              Navigator.push(context,
+                  MaterialPageRoute<void>(builder: (BuildContext context) {
+                return Scaffold(
+                  appBar: AppBar(
+                    title: Text(users[index]),
+                  ),
+                  body: Container(
+                      color: Colors.white,
+                      alignment: Alignment.center,
+                      child: getPage(users[index], userPersonalInfo)),
+                );
+              }));
             },
+            //   ));
+            // },
             // leading: Text(
             //   users[index]["_id"].toString(),
             //   style:
