@@ -139,7 +139,8 @@ class _HomeState extends State<Home> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => PayBills()),
+                                          builder: (context) =>
+                                              PayBills(userInfo: snap.data!)),
                                     );
                                   },
                                   child: Column(
