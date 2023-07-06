@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:healthcareit/settings/faq.dart';
 import 'package:healthcareit/settings/myCards.dart';
@@ -88,7 +90,96 @@ Widget buildlist(List users, User userPersonalInfo) => ListView.builder(
         );
       },
     );
+getSubtotal(List items) {
+  int? sub = 0;
+  for (var item in items) {
+    sub = (sub! + (item['price'] * item['count'])) as int?;
+  }
+  return sub;
+}
 
+Widget buildCartTotal(List items) {
+  final subtotal = getSubtotal(items);
+
+  final tax = 50;
+
+  final delivery = 30;
+
+  final total = subtotal + tax + delivery;
+
+  return ListView(
+    padding: const EdgeInsets.all(8),
+    children: <Widget>[
+      Container(
+        height: 50,
+        color: Colors.amber[600],
+        child: Center(child: Text('Subtotal - $subtotal')),
+      ),
+      Container(
+        height: 50,
+        color: Colors.amber[500],
+        child: Center(child: Text('Tax - $tax')),
+      ),
+      Container(
+        height: 50,
+        color: Colors.amber[100],
+        child: Center(child: Text('Delivery - $delivery')),
+      ),
+      Container(
+        height: 50,
+        color: Colors.amber[100],
+        child: Center(child: Text('Total =  $total')),
+      ),
+    ],
+  );
+}
+
+Widget buildcartitems(List items) => ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+        print(item);
+        return Card(
+            color: Colors.blue,
+            elevation: 4,
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: ListTile(
+                    onTap: () {},
+                    leading: item['icon'],
+                    title: Text(item['name']),
+                    subtitle: Text(item['price'].toString()),
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ElevatedButton(
+                          onPressed: () {
+                            item['count'] = item['count'] + 1;
+                          },
+                          child: Icon(Icons.add)),
+                      Text(
+                        item["count"].toString(),
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            if (item['count'] > 0) {
+                              item['count'] = item['count'] - 1;
+                            }
+                          },
+                          child: Icon(Icons.remove)),
+                    ],
+                  ),
+                ),
+              ],
+            ));
+      },
+    );
 getPage(navPage, userPersonalInfo) {
   switch (navPage) {
     case "Account Settings":
