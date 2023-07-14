@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:healthcareit/model/product.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/user.dart';
@@ -54,6 +55,25 @@ Future<User> fetchUserData() async {
     return user;
   } else {
     throw Exception('Failed to fetch user data');
+  }
+}
+
+Future<List<Product>> fetchPharmacyData() async {
+  await Future.delayed(const Duration(seconds: 2));
+  const String _url = "http://localhost:3000/pharmacydrugs";
+  final url = Uri.parse(_url);
+  final response = await http.get(url);
+  if (response.statusCode == 200) {
+    final jsonData = jsonDecode(response.body);
+    //var user = Product.fromJson(jsonData);
+    //print(jsonData);
+    List<Product> products =
+        List<Product>.from(jsonData.map((product) => Product.fromJson(product)))
+            .toList();
+    print(products);
+    return products;
+  } else {
+    throw Exception('Failed to fetch product data');
   }
 }
 

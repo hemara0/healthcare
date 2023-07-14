@@ -63,8 +63,8 @@ class CartProductCard extends StatelessWidget {
           SizedBox(
             width: 20,
           ),
-          Expanded(child: Text(product.name)),
-          Expanded(child: Text('${product.price}')),
+          Expanded(child: Text(product.drugName)),
+          Expanded(child: Text('${product.drugPrice}')),
           IconButton(
               onPressed: () {
                 controller.removeProduct(product);

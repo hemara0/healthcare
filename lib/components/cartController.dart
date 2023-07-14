@@ -3,20 +3,21 @@ import 'package:get/get.dart';
 import 'package:healthcareit/model/product.dart';
 
 class CartController extends GetxController {
-  var _products = {}.obs;
+  final _products = {}.obs;
 
   void addProduct(Product product) {
     if (_products.containsKey(product)) {
       _products[product] += 1;
-      print('product added ${product.name}');
+      print('product added ${product.drugName}');
     } else {
       _products[product] = 1;
     }
+    //SnackBar(content: Text("Product added ${product.drugName}"));
     // Get.snackbar(
     //     "Product Added",
     //     "You have added the ${product.name} to the cart",
     //     snackPosition: SnackPosition.BOTTOM,
-    //     duration: Duration(seconds: 2));
+    //     duration: Duration(seconds: 2));https://cloud.mongodb.com/v2/6443bfbeb2631e0f3852fb03#/dataAPI
   }
 
   get products => _products;
@@ -30,11 +31,11 @@ class CartController extends GetxController {
   }
 
   get productSubtotal => _products.entries
-      .map((product) => product.key.price * product.value)
+      .map((product) => double.parse(product.key.drugPrice) * product.value)
       .toList();
 
   get total => _products.entries
-      .map((product) => product.key.price * product.value)
+      .map((product) => double.parse(product.key.drugPrice) * product.value)
       .toList()
       .reduce((value, element) => value + element)
       .toStringAsFixed(2);
