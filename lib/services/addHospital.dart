@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
+import '../model/user.dart';
 import '../provider/provider.dart';
 
 class GFG extends StatefulWidget {
@@ -10,6 +13,18 @@ class GFG extends StatefulWidget {
 }
 
 class _GFGState extends State<GFG> {
+  // dynamic userEditedinfo = {
+  //     'user_hospitals': ['hosp1', 'hosp2']
+  //   };
+
+  // Future<Map> getUsers() async {
+  // const url = '';
+  // final response = await http.get(Uri.parse(url));
+  // final body = json.decode(response.body);
+  //dynamic data = fetchData();
+
+  //   return userEditedinfo.map<User>(User.toJson);
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,6 +124,13 @@ class CustomSearchDelegate extends SearchDelegate {
             title: Text(result),
             // onTap: () => ScaffoldMessenger.of(context)
             //     .showSnackBar(SnackBar(content: Text("$result added"))));
+
+            onTap: (() {
+              saveAndSend(result);
+              ScaffoldMessenger.of(context)
+                  .showSnackBar(SnackBar(content: Text(result.toString())));
+            }));
+
             onTap: () => submitData(result));
 
         // return InkWell(
@@ -117,5 +139,19 @@ class CustomSearchDelegate extends SearchDelegate {
         // );
       },
     );
+  }
+
+  void saveAndSend(hospital) async {
+    User userPersonalinfo1 = await fetchUserData();
+    print(userPersonalinfo1.userHospitals);
+    Hospital hospitalEdited = Hospital(hospitalName: hospital, visits: []);
+    userPersonalinfo1.userHospitals.add(hospitalEdited);
+    print(userPersonalinfo1.userHospitals);
+    //Map<String, dynamic> userJson = hospitalEdited.toJson();
+    //String userEditedinfo = jsonEncode(userPersonalinfo1);
+    // userEditedinfo['user_hospitals'] =
+    //     userEditedinfo['user_hospitals'].add(hospital);
+    // var userEditedinfo = JSON.parse(userEditedinfo1);
+    updateData(userPersonalinfo1);
   }
 }
