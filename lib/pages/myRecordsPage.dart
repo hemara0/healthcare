@@ -17,55 +17,7 @@ class Records extends StatefulWidget {
 }
 
 class _RecordsState extends State<Records> {
-  // List fetchedData = [
-  //   {
-  //     "_id": "645200814fcac016618df063",
-  //     "name": "hospital1",
-  //     "email": "Address1",
-  //     "__v": 0
-  //   },
-  //   {
-  //     "_id": "6452189268e6b826871743c7",
-  //     "name": "hospital2",
-  //     "email": "Address2",
-  //     "__v": 0
-  //   },
-  //   {
-  //     "_id": "6453785e1144977889e3b9c6",
-  //     "name": "hospital3",
-  //     "email": "Address3",
-  //     "__v": 0
-  //   },
-  //   {
-  //     "_id": "645378db1144977889e3b9c8",
-  //     "name": "hospital4",
-  //     "email": "Address4",
-  //     "__v": 0
-  //   },
-  //   {
-  //     "_id": "6454b90b9b621e9e81850170",
-  //     "name": "hospital5",
-  //     "email": "Address5",
-  //     "__v": 0
-  //   }
-  // ];
-  //late final usersFuture;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   usersFuture = getUsers();
-  // }
-
-  // Future<List<User>> fetchedData = getUsers();
-  // static Future<List<User>> getUsers() async {
-  //   // const url = '';
-  //   // final response = await http.get(Uri.parse(url));
-  //   // final body = json.decode(response.body);
-  //   dynamic data = fetchData();
-  //   return data.map<User>(User.fromJson).toList();
-  // }
 
   @override
   Widget build(BuildContext context) {

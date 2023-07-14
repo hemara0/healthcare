@@ -215,7 +215,6 @@ class Appointment {
       status: json['status'],
     );
   }
-
   Map<String, dynamic> toJson() {
     return {
       'hospitalId': hospitalId,
@@ -227,4 +226,8 @@ class Appointment {
       'status': status,
     };
   }
+
+  static User fromJson(json) => 
+  User(name: json["name"], email: json["email"]);
+
 }

@@ -124,11 +124,14 @@ class CustomSearchDelegate extends SearchDelegate {
             title: Text(result),
             // onTap: () => ScaffoldMessenger.of(context)
             //     .showSnackBar(SnackBar(content: Text("$result added"))));
+
             onTap: (() {
               saveAndSend(result);
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(result.toString())));
             }));
+
+            onTap: () => submitData(result));
 
         // return InkWell(
         //   child: Text(result.toString()),
