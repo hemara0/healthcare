@@ -180,25 +180,25 @@ Widget buildAppointments(List users, sentColor, fieldIcons) => ListView.builder(
       },
     );
 
-Widget buildmedicines(List items) => ListView.builder(
-    // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-    //     crossAxisCount: 2, mainAxisSpacing: 20.0, crossAxisSpacing: 20.0),
-    itemCount: items.length,
-    itemBuilder: (context, index) {
-      //   return ItemCard(
-      //     product: items[index],
-      //   );
-      // });
-      return ListTile(
-        title: Text(items[index]['name']),
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ItemDetails()),
-          );
-        },
-      );
-    });
+// Widget buildmedicines(List items) => ListView.builder(
+//     // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//     //     crossAxisCount: 2, mainAxisSpacing: 20.0, crossAxisSpacing: 20.0),
+//     itemCount: items.length,
+//     itemBuilder: (context, index) {
+//       //   return ItemCard(
+//       //     product: items[index],
+//       //   );
+//       // });
+//       return ListTile(
+//         title: Text(items[index]['name']),
+//         onTap: () {
+//           Navigator.push(
+//             context,
+//             MaterialPageRoute(builder: (context) => ItemDetails()),
+//           );
+//         },
+//       );
+//     });
 
 getPage(navPage) {
   if (navPage == "visitsDetail") {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcareit/components/cartController.dart';
 import 'package:healthcareit/model/product.dart';
+import '../home/medicalStore/itemDetails.dart';
 import '../provider/provider.dart';
 
 class CatalogProducts extends StatefulWidget {
@@ -55,23 +56,34 @@ class _CatalogProductCardState extends State<CatalogProductCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        CircleAvatar(
-          radius: 20,
-        ),
-        SizedBox(
-          width: 20,
-        ),
-        Expanded(child: Text(widget.products[widget.index].drugName)),
-        Expanded(child: Text('${widget.products[widget.index].drugPrice}')),
-        IconButton(
-            onPressed: () {
-              cartController.addProduct(widget.products[widget.index]);
-            },
-            icon: Icon(Icons.add_circle))
-      ]),
-    );
+    return InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ItemDetails(
+                      productDetails: widget.products[widget.index],
+                    )),
+          );
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            CircleAvatar(
+              radius: 20,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(child: Text(widget.products[widget.index].drugName)),
+            Expanded(child: Text('${widget.products[widget.index].drugPrice}')),
+            IconButton(
+                onPressed: () {
+                  cartController.addProduct(widget.products[widget.index]);
+                },
+                icon: Icon(Icons.add_circle))
+          ]),
+        ));
   }
 }

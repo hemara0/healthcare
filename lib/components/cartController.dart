@@ -22,6 +22,20 @@ class CartController extends GetxController {
 
   get products => _products;
 
+  get tax => 20.toString();
+
+  get delivery => 50.toString();
+
+  get productDetails =>
+      _products.entries.map((product) => product.key.drugName).toList();
+
+  get productsCount =>
+      _products.entries.map((product) => product.value).toList();
+
+  get cartTotal =>
+      (double.parse(tax) + double.parse(delivery) + double.parse(total))
+          .toString();
+
   void removeProduct(Product product) {
     if (_products.containsKey(product) && _products[product] == 1) {
       _products.removeWhere((key, value) => key == product);

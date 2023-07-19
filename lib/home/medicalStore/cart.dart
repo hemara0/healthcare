@@ -31,18 +31,83 @@ class CartTotal extends StatelessWidget {
     return Obx(
       () => Container(
         padding: const EdgeInsets.symmetric(horizontal: 75),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
           children: [
-            Expanded(
-                child: Text(
-              'Total',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            )),
-            Expanded(
-                child: Text('${controller.total}',
-                    style:
-                        TextStyle(fontSize: 24, fontWeight: FontWeight.bold)))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Subtotal',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                Text('${controller.total}',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Tax',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '${controller.tax.toString()}',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Delivery',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '${controller.delivery}',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Total',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '${controller.cartTotal}',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  print(controller.productDetails);
+                  print(controller.productsCount);
+                  // print(contoller.products[0].price);
+                },
+                child: Text('Proceed to Pay')),
           ],
         ),
       ),
