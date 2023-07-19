@@ -23,6 +23,7 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   upi_india: ^3.0.1
   get: ^4.6.5
+  getwidget: ^3.1.1
 
 dev_dependencies:
   flutter_test:

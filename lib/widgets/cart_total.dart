@@ -111,6 +111,13 @@ class CartTotal extends StatelessWidget {
                 ),
               ],
             ),
+            ElevatedButton(
+                onPressed: () {
+                  print(contoller.productDetails);
+                  print(contoller.productsCount);
+                  // print(contoller.products[0].price);
+                },
+                child: Text('Proceed to Pay')),
           ],
         ),
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:healthcareit/controllers/cart_contoller.dart';
-
+import 'package:getwidget/getwidget.dart';
 import '../model/product_model.dart';
 
 class CartProducts extends StatelessWidget {
@@ -50,8 +50,9 @@ class CartProductCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CircleAvatar(
-              radius: 40,
+            GFAvatar(
+              shape: GFAvatarShape.square,
+              size: GFSize.SMALL,
               //backgroundImage: product.icon,
             ),
             SizedBox(

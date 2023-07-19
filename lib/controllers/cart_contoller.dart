@@ -31,6 +31,12 @@ class CartContoller extends GetxController {
 
   get products => _products;
 
+  get productDetails =>
+      _products.entries.map((product) => product.key.name).toList();
+
+  get productsCount =>
+      _products.entries.map((product) => product.value).toList();
+
   get productSubtotal => _products.entries
       .map((product) => product.key.price * product.value)
       .toList();

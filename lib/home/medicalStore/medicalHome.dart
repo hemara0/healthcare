@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../controllers/cart_contoller.dart';
 import '../../model/product_model.dart';
+import 'itemDetails.dart';
 
 class MedicalHome extends StatefulWidget {
   @override
@@ -33,33 +34,47 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-        ),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 20,
-              //backgroundImage: Product.products[index].icon,
-            ),
-            SizedBox(
-              width: 20,
-            ),
-            Expanded(
-                child: Text(
-              Product.products[index].name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            )),
-            Expanded(child: Text('${Product.products[index].price}')),
-            IconButton(
-              onPressed: () {
-                cartContoller.addProduct(Product.products[index]);
-              },
-              icon: Icon(Icons.add_circle),
-            ),
-          ],
-        ));
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ItemDetails(
+                    // productDescription: 'Product Description',
+                    // productName: Product.products[index].name,
+                    // productPrice: '${Product.products[index].price}',
+                    productDetails: Product.products[index],
+                  )),
+        );
+      },
+      child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 10,
+          ),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 20,
+                //backgroundImage: Product.products[index].icon,
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                  child: Text(
+                Product.products[index].name,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              )),
+              Expanded(child: Text('${Product.products[index].price}')),
+              IconButton(
+                onPressed: () {
+                  cartContoller.addProduct(Product.products[index]);
+                },
+                icon: Icon(Icons.add_circle),
+              ),
+            ],
+          )),
+    );
   }
 }

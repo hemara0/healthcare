@@ -77,7 +77,7 @@ class _CartExState extends State<CartEx> {
     //body:
     return Column(children: [
       Expanded(child: CartProducts()),
-      Expanded(child: CartTotal())
+      Expanded(child: CartTotal()),
     ]);
   }
 }
