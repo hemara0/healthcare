@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class GovernmentId {
   final String idType;
   final String idNumber;
@@ -162,9 +164,11 @@ class User {
 
 class Orders {
   List<Appointment> appointment;
+  List<UserMedicalStore> medicine;
 
   Orders({
     required this.appointment,
+    required this.medicine,
   });
 
   factory Orders.fromJson(Map<String, dynamic> json) {
@@ -172,17 +176,22 @@ class Orders {
       json['appointment']
           .map((appointment) => Appointment.fromJson(appointment)),
     );
+    List<UserMedicalStore> medicines = List<UserMedicalStore>.from(
+      json['medicalStore']
+          .map((medicine) => UserMedicalStore.fromJson(medicine)),
+    );
 
-    return Orders(appointment: appointments);
+    return Orders(appointment: appointments, medicine: medicines);
+    //return Orders(appointment: appointments);
   }
 
   Map<String, dynamic> toJson() {
     List<Map<String, dynamic>> appointmentJson =
         appointment.map((appointment) => appointment.toJson()).toList();
+    List<Map<String, dynamic>> drugOrdersJson =
+        medicine.map((medicine) => medicine.toJson()).toList();
 
-    return {
-      'appointment': appointmentJson,
-    };
+    return {'appointment': appointmentJson, 'medicalStore': drugOrdersJson};
   }
 }
 
@@ -226,5 +235,84 @@ class Appointment {
       'reasonOfVisit': reasonOfVisit,
       'status': status,
     };
+  }
+}
+
+class UserMedicalStore {
+  final String subtotal;
+  final String tax;
+  final String delivery;
+  final String total;
+  final String orderDate;
+  final List<DrugsOrders> drugs;
+  final String id;
+
+  UserMedicalStore({
+    required this.subtotal,
+    required this.tax,
+    required this.delivery,
+    required this.total,
+    required this.orderDate,
+    required this.drugs,
+    required this.id,
+  });
+  factory UserMedicalStore.fromJson(Map<String, dynamic> json) {
+    List<DrugsOrders> drugs = [];
+    if (json['drugs'] != null) {
+      drugs = (json['drugs'] as List<dynamic>).map((visit) {
+        return DrugsOrders(
+          drugID: visit['drugID'] as String? ?? '',
+          drugCount: visit['drugCount'] as String? ?? '',
+        );
+      }).toList();
+    }
+
+    return UserMedicalStore(
+        subtotal: json['subtotal'] as String? ?? '',
+        total: json['total'] as String? ?? '',
+        orderDate: json['OrderDate'] as String? ?? '',
+        tax: json['tax'] as String? ?? '',
+        delivery: json['delivery'] as String? ?? '',
+        drugs: drugs,
+        id: json['_id']);
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
+      'subtotal': subtotal,
+      'tax': tax,
+      'delivery': delivery,
+      'total': total,
+      'OrderDate': orderDate,
+      'drugs': drugs.map((drug) => drug.toJson()).toList(),
+      '_id': id
+    };
+
+    return data;
+  }
+}
+
+class DrugsOrders {
+  final String drugID;
+  final String drugCount;
+
+  DrugsOrders({
+    required this.drugID,
+    required this.drugCount,
+  });
+  factory DrugsOrders.fromJson(Map<String, dynamic> json) {
+    return DrugsOrders(
+      drugID: json['drugID'],
+      drugCount: json['drugCount'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
+      'drugID': drugID,
+      'drugCount': drugCount,
+    };
+
+    return data;
   }
 }

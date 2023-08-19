@@ -7,6 +7,7 @@ import 'package:healthcareit/home/medicalStore.dart';
 import 'package:healthcareit/home/payBills.dart';
 import 'package:healthcareit/model/user.dart';
 
+import '../home/medicalStore/medicalHome.dart';
 import '../provider/provider.dart';
 
 class Home extends StatefulWidget {
