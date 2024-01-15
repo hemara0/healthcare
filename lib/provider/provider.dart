@@ -20,6 +20,7 @@ import '../model/user.dart';
 //     parsedFetchData = parsedData as List;
 //   }
 // }
+
 _setHeaders() => {
       "Content-Type": "application/json",
       "Accept": "*/*",
@@ -95,4 +96,27 @@ Future<void> updateData(result) async {
       await http.patch(uri, body: jsonEncode(data), headers: _setHeaders());
   print(respose.statusCode);
   print(respose);
+}
+
+dynamic fetchUserLogin(username, password) async {
+  dynamic userData = {username:username, password:password};
+  print(userData);
+   String _url = 'http://localhost:3000/login/username=${username}';
+  final url = Uri.parse(_url);
+  final response = await http.get(url);
+  print(response.body);
+  dynamic resBody = json.decode(response.body);
+  if(resBody["username"] == username && resBody["password"] == password)
+  {
+    bool validate = true;
+    String patient_id = resBody["patient_id"];
+    print(resBody);
+    return resBody;
+  }
+  else
+  {
+    bool validate = false;
+    print(validate);
+  }
+  
 }

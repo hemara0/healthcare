@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthcareit/home/medicalStore/login.dart';
 import 'package:healthcareit/pages/homePage.dart';
 import 'package:healthcareit/pages/myRecordsPage.dart';
 import 'package:healthcareit/pages/notificationsPage.dart';
@@ -31,7 +32,7 @@ class _NavigationExampleState extends State<NavigationExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   /* return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.blue,
           title: const Text("AppName"),
@@ -97,5 +98,12 @@ class _NavigationExampleState extends State<NavigationExample> {
         ),
       ][currentPageIndex],
     );
-  }
+  */
+  return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: const Text("Heal"),
+      ),
+  body:const Login(),);
+}
 }

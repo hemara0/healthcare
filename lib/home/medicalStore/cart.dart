@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcareit/components/cartController.dart';
+import 'package:healthcareit/pages/notificationsPage.dart';
 
 import '../../model/user.dart';
 import '../../provider/provider.dart';
@@ -148,4 +149,5 @@ class _CartTotalState extends State<CartTotal> {
           }
         });
   }
+
 }
