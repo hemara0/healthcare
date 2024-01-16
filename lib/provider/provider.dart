@@ -98,25 +98,28 @@ Future<void> updateData(result) async {
   print(respose);
 }
 
-dynamic fetchUserLogin(username, password) async {
-  dynamic userData = {username:username, password:password};
-  print(userData);
-   String _url = 'http://localhost:3000/login/username=${username}';
+Future fetchUserLogin(username, password) async {
+  // dynamic userData = {'username': username, 'password': password};
+  // print(userData);
+  String _url = 'http://localhost:3000/login/username=${username}';
+  print(_url);
   final url = Uri.parse(_url);
   final response = await http.get(url);
   print(response.body);
   dynamic resBody = json.decode(response.body);
-  if(resBody["username"] == username && resBody["password"] == password)
-  {
+  //dynamic resBody = response.body;
+
+  if (resBody[0]["username"] == username &&
+      resBody[0]["password"] == password) {
     bool validate = true;
-    String patient_id = resBody["patient_id"];
+    //String patient_id = resBody[0]["patient_id"];
+    resBody[0]["validate"] = validate;
+    print(validate);
     print(resBody);
     return resBody;
-  }
-  else
-  {
+  } else {
     bool validate = false;
     print(validate);
+    return validate;
   }
-  
 }
