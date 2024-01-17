@@ -1,38 +1,24 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:healthcareit/home/medicalStore/login.dart';
-import 'package:healthcareit/pages/homePage.dart';
-import 'package:healthcareit/pages/myRecordsPage.dart';
-import 'package:healthcareit/pages/notificationsPage.dart';
 import 'package:healthcareit/pages/settingsPage.dart';
-import 'package:healthcareit/provider/provider.dart';
 
-void main() async {
-  runApp(MyApp());
-}
+import 'homePage.dart';
+import 'myRecordsPage.dart';
+import 'notificationsPage.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        home: NavigationExample(), debugShowCheckedModeBanner: false);
-  }
-}
-
-class NavigationExample extends StatefulWidget {
+class NavigationEx extends StatefulWidget {
   //const NavigationExample({super.key});
 
   @override
-  State<NavigationExample> createState() => _NavigationExampleState();
+  State<NavigationEx> createState() => _NavigationExState();
 }
 
-class _NavigationExampleState extends State<NavigationExample> {
+class _NavigationExState extends State<NavigationEx> {
   int currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-   /* return Scaffold(
+    return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.blue,
           title: const Text("AppName"),
@@ -98,12 +84,5 @@ class _NavigationExampleState extends State<NavigationExample> {
         ),
       ][currentPageIndex],
     );
-  */
-  return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: const Text("Heal"),
-      ),
-  body:const Login(),);
-}
+  }
 }
