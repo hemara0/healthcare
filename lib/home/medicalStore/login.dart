@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcareit/components/cartController.dart';
+import 'package:healthcareit/model/userlogin.dart';
 
 import '../../model/user.dart';
 import '../../pages/homenav.dart';
@@ -107,24 +108,28 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 35),
                   child: MaterialButton(
-                    onPressed: () {
+                    onPressed: () async {
                       //Get.to(provider());
 
                       print("Entered onPressed");
                       print(user_controller.text);
                       print(pass_controller.text);
                       // print(_login[1].text);
-                      dynamic logindata = fetchUserLogin(
+                      UserLogin logindata = await fetchUserLogin(
                           user_controller.text, pass_controller.text);
-                      if (logindata[0]['validate'] == true) {
+                      print('**********');
+                      print(logindata);
+                      if (logindata.validate == true) {
+                        print('right creds');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NavigationEx()),
+                        );
                         NavigationEx();
                       } else {
                         print('Wrong creds');
                       }
-                      // Future.delayed(Duration(seconds: 1), () {
-                      //   login_username.clear();
-                      //   login_password.clear();
-                      // });
                     },
                     minWidth: double.infinity,
                     child: Text('Login'),
